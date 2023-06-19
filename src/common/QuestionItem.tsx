@@ -5,17 +5,20 @@ interface Props {
   title: string;
   isPublished: boolean;
   isDel: (id: number) => void;
+  isPush: (id: number) => void;
 }
 
 const QuestionItem: FC<Props> = (props) => {
-  const { id, title, isPublished, isDel } = props;
+  const { id, title, isPublished, isDel, isPush } = props;
 
   const onEdit = (id: number) => {
     console.log("edit id: ", id);
   };
   const onDel = (id: number) => {
-    console.log("id", id);
     isDel(id);
+  };
+  const onPush = (id: number) => {
+    isPush(id);
   };
   return (
     <div
@@ -33,6 +36,9 @@ const QuestionItem: FC<Props> = (props) => {
       </button>
       <button className="border p-1" onClick={() => onDel(id)}>
         删除问卷
+      </button>
+      <button className="border p-1" onClick={() => onPush(id)}>
+        发布问卷
       </button>
     </div>
   );

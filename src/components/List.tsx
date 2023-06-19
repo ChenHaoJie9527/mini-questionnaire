@@ -39,6 +39,20 @@ export const List: FC = () => {
       return list.filter((item) => item.id !== id);
     });
   };
+  const isPush = (id: number) => {
+    setQuestionList((list) => {
+      return list.map((item) => {
+        if (item.id !== id) {
+          return item;
+        } else {
+          return {
+            ...item,
+            isPublished: true,
+          };
+        }
+      });
+    });
+  };
   // 列表页
   return (
     <div className="App container mx-auto flex flex-col items-center">
@@ -53,6 +67,7 @@ export const List: FC = () => {
               title={title}
               isPublished={isPublished}
               isDel={isDel}
+              isPush={isPush}
             />
           );
         })}
