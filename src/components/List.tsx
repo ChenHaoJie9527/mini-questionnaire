@@ -25,9 +25,6 @@ export const List: FC = () => {
       isPublished: false,
     },
   ];
-  const onEdit = (id: number) => {
-    console.log("edit id: ", id);
-  };
   return (
     <div className="App container mx-auto">
       <h1 className="text-center mb-2">问卷列表页</h1>
