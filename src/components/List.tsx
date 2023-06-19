@@ -34,6 +34,11 @@ export const List: FC = () => {
       },
     ]);
   };
+  const isDel = (id: number) => {
+    setQuestionList((list) => {
+      return list.filter((item) => item.id !== id);
+    });
+  };
   // 列表页
   return (
     <div className="App container mx-auto flex flex-col items-center">
@@ -47,6 +52,7 @@ export const List: FC = () => {
               id={id}
               title={title}
               isPublished={isPublished}
+              isDel={isDel}
             />
           );
         })}
