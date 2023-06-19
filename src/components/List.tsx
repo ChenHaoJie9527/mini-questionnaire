@@ -1,9 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import QuestionItem from "../common/QuestionItem";
 
 export const List: FC = () => {
-  // 列表页
-  const questionList = [
+  const [questionList, setQuestionList] = useState([
     {
       id: 1,
       title: "问卷1",
@@ -24,9 +23,20 @@ export const List: FC = () => {
       title: "问卷4",
       isPublished: false,
     },
-  ];
+  ]);
+  const onAddQuestion = () => {
+    setQuestionList([
+      ...questionList,
+      {
+        id: questionList.length + 1,
+        title: `问卷${questionList.length + 1}`,
+        isPublished: true,
+      },
+    ]);
+  };
+  // 列表页
   return (
-    <div className="App container mx-auto">
+    <div className="App container mx-auto flex flex-col items-center">
       <h1 className="text-center mb-2">问卷列表页</h1>
       <div className="flex items-center flex-col space-y-4">
         {questionList.map((item) => {
@@ -41,6 +51,9 @@ export const List: FC = () => {
           );
         })}
       </div>
+      <button className="border p-2 mt-2" onClick={onAddQuestion}>
+        添加问卷
+      </button>
     </div>
   );
 };

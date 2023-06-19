@@ -23,7 +23,7 @@ const QuestionItem: FC<Props> = (props) => {
       ) : (
         <span className="text-red-500">未发布</span>
       )}
-      <button onClick={() => onEdit(id)}>编辑问卷</button>
+      <button className="border p-1" onClick={() => onEdit(id)}>编辑问卷</button>
     </div>
   );
 };
