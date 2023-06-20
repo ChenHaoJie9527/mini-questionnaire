@@ -37,22 +37,28 @@ export const List: FC = () => {
   };
   const isDel = (id: number) => {
     const list = useImmer(questionList, (draft) => {
-      return draft.filter((item) => item.id !== id);
+      // return draft.filter((item) => item.id !== id);
+      const index = draft.findIndex((item) => item.id === id);
+      draft.splice(index, 1);
     });
     setQuestionList(list);
   };
   const isPush = (id: number) => {
     const list = useImmer(questionList, (draft) => {
-      return draft.map((item) => {
-        if (item.id !== id) {
-          return item;
-        } else {
-          return {
-            ...item,
-            isPublished: true,
-          };
-        }
-      });
+      // return draft.map((item) => {
+      //   if (item.id !== id) {
+      //     return item;
+      //   } else {
+      //     return {
+      //       ...item,
+      //       isPublished: true,
+      //     };
+      //   }
+      // });
+      const item = draft.find(item => item.id === id);
+      if (item) {
+        item.isPublished = true;
+      }
     });
     setQuestionList(list);
   };
