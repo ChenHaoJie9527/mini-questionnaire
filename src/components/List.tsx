@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import QuestionItem from "../common/QuestionItem";
-import { produce } from "immer";
+import { useImmer } from "../hooks";
 
 export const List: FC = () => {
   const [questionList, setQuestionList] = useState([
@@ -26,24 +26,24 @@ export const List: FC = () => {
     },
   ]);
   const onAddQuestion = () => {
-    const list = produce(questionList, draft => {
-       draft.push({
-         id: draft.length + 1,
-         title: `问卷${draft.length + 1}`,
-         isPublished: true
-       });
-
+    const list = useImmer(questionList, (draft) => {
+      draft.push({
+        id: draft.length + 1,
+        title: `问卷${draft.length + 1}`,
+        isPublished: true,
+      });
     });
     setQuestionList(list);
   };
   const isDel = (id: number) => {
-    setQuestionList((list) => {
-      return list.filter((item) => item.id !== id);
+    const list = useImmer(questionList, (draft) => {
+      return draft.filter((item) => item.id !== id);
     });
+    setQuestionList(list);
   };
   const isPush = (id: number) => {
-    setQuestionList((list) => {
-      return list.map((item) => {
+    const list = useImmer(questionList, (draft) => {
+      return draft.map((item) => {
         if (item.id !== id) {
           return item;
         } else {
@@ -54,6 +54,7 @@ export const List: FC = () => {
         }
       });
     });
+    setQuestionList(list);
   };
   // 列表页
   return (
