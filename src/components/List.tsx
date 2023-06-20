@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import QuestionItem from "../common/QuestionItem";
+import { produce } from "immer";
 
 export const List: FC = () => {
   const [questionList, setQuestionList] = useState([
@@ -25,14 +26,15 @@ export const List: FC = () => {
     },
   ]);
   const onAddQuestion = () => {
-    setQuestionList([
-      ...questionList,
-      {
-        id: questionList.length + 1,
-        title: `问卷${questionList.length + 1}`,
-        isPublished: true,
-      },
-    ]);
+    const list = produce(questionList, draft => {
+       draft.push({
+         id: draft.length + 1,
+         title: `问卷${draft.length + 1}`,
+         isPublished: true
+       });
+
+    });
+    setQuestionList(list);
   };
   const isDel = (id: number) => {
     setQuestionList((list) => {
