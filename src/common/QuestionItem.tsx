@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 
 interface Props {
   id: number;
@@ -10,13 +10,6 @@ interface Props {
 
 const QuestionItem: FC<Props> = (props) => {
   const { id, title, isPublished, isDel, isPush } = props;
-  // useEffect(() => {
-  //   console.log('questionItem mounted');
-  //   return () => {
-  //     console.log('questionItem unmounted');
-  //   }
-  // }, [])
-
   const onEdit = (id: number) => {
     console.log("edit id: ", id);
   };
