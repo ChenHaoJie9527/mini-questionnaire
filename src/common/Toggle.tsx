@@ -46,6 +46,14 @@ const Toggle: FC = () => {
         <button
           className="border"
           type="button"
+          onClick={toggle}
+          style={{ margin: "0 8px" }}
+        >
+           Toggle
+        </button>
+        <button
+          className="border"
+          type="button"
           onClick={setLeft}
           style={{ margin: "0 8px" }}
         >
