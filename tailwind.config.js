@@ -2,12 +2,17 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx,html}"],
   theme: {
-    extend: {
-      
-    },
+    extend: {},
     container: {
-      center: true
-    }
+      center: true,
+      padding: {
+        DEFAULT: "2rem",
+        sm: "2rem",
+        lg: "4rem",
+        xl: "8rem",
+        "2xl": "12rem",
+      },
+    },
   },
   plugins: [],
 };

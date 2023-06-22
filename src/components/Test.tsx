@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import QuestionItem from "../common/QuestionItem";
 import { useImmer } from "../hooks";
 
-export const List: FC = () => {
+export const Test: FC = () => {
   /**
    * 组件初次渲染时执行了两次useEffect
    * 实际上是先渲染了一次，然后销毁了一次，然后有渲染了一次
