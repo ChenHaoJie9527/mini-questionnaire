@@ -4,12 +4,27 @@ import Header from "../components/Header";
 import { listData } from "../mock";
 
 const List: FC = () => {
-  const [questionList] = useState(listData);
+  const [questionList, setQuestionList] = useState(listData);
+  const onStart = (id: number, isStarted: boolean) => {
+    setQuestionList((list) => {
+      return list.map((item) => {
+        if (item.id === id) {
+          item.isStarted = isStarted;
+          return {
+            ...item,
+          };
+        } else {
+          return item;
+        }
+      });
+    });
+  };
   return (
-    <div className="w-full bg-[#e4e0e0] p-5">
+    <div className="w-full bg-[#ece9e9] p-5">
       <Header />
       {questionList.map((item) => {
-        return <QuestionCard {...item} key={item.id} />;
+        const props = { ...item, onStart };
+        return <QuestionCard {...props} key={item.id} />;
       })}
       <div>footer</div>
     </div>
