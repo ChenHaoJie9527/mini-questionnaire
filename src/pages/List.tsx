@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import { listData } from "../mock";
 
 const List: FC = () => {
-  const [questionList, setQuestionList] = useState(listData);
+  const [questionList] = useState(listData);
   return (
     <div className="w-full bg-[#e4e0e0] p-5">
       <Header />
