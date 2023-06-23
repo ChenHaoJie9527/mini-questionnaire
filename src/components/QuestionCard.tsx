@@ -4,10 +4,11 @@ import { MyConstArrayItem } from "../mock";
 type props = MyConstArrayItem;
 
 const QuestionCard: FC<props> = (props) => {
-  const { id, title, isPublished, isStarted, answerCount, createAt } = props;
+//   const { id, title, isPublished, isStarted, answerCount, createAt } = props;
+console.log(props);
   return (
     <div>
-      <p>id: {id}</p>
+      list
     </div>
   );
 };
