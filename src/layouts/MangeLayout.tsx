@@ -1,7 +1,12 @@
 import React, { FC } from "react";
-import { Outlet } from "react-router-dom";
-import { Layout } from "antd";
-
+import { Outlet, useNavigate } from "react-router-dom";
+import { Layout, Space, Button, Divider } from "antd";
+import {
+  PlusOutlined,
+  BarsOutlined,
+  StarOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 const { Sider, Content } = Layout;
 
 const contentStyle: React.CSSProperties = {
@@ -9,20 +14,51 @@ const contentStyle: React.CSSProperties = {
   minHeight: 120,
   lineHeight: "120px",
   color: "#fff",
-  backgroundColor: "#108ee9",
 };
 
 const siderStyle: React.CSSProperties = {
-  textAlign: "center",
-  lineHeight: "120px",
-  color: "#fff",
-  backgroundColor: "#3ba0e9",
+  padding: "10px",
 };
 
 const MangeLayout: FC = () => {
+  const navigate = useNavigate();
   return (
     <Layout hasSider>
-      <Sider style={siderStyle}>main left</Sider>
+      <Sider style={siderStyle}>
+        <div className="flex items-center flex-col">
+          <Space direction="vertical">
+            <Button
+              size="large"
+              className="flex items-center justify-center text-white"
+            >
+              <PlusOutlined />
+              新建问卷
+            </Button>
+            <Divider />
+            <Button
+              type="link"
+              className="flex items-center justify-center text-white"
+              onClick={() => navigate({ pathname: "/mange/list" })}
+            >
+              <BarsOutlined /> 我的问卷
+            </Button>
+            <Button
+              type="link"
+              className="flex items-center justify-center text-white"
+              onClick={() => navigate({ pathname: "/mange/start" })}
+            >
+              <StarOutlined /> 星标问卷
+            </Button>
+            <Button
+              type="link"
+              className="flex items-center justify-center text-white"
+              onClick={() => navigate({ pathname: "/mange/trash" })}
+            >
+              <DeleteOutlined /> 回收站
+            </Button>
+          </Space>
+        </div>
+      </Sider>
       <Content style={contentStyle}>
         <Outlet />
       </Content>

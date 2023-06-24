@@ -7,26 +7,28 @@ const { Header, Content, Footer } = Layout;
 const headerStyle: React.CSSProperties = {
   textAlign: "center",
   color: "#fff",
-  height: 64,
+  minHeight: '64px',
   paddingInline: 50,
   lineHeight: "64px",
-  backgroundColor: "#7dbcea",
 };
 
 const footerStyle: React.CSSProperties = {
   textAlign: "center",
   color: "#fff",
-  backgroundColor: "#7dbcea",
 };
 
 const MainLayout: FC = () => {
   return (
     <Layout>
-      <Header style={headerStyle}>MainLayout header</Header>
+      <Header style={headerStyle} className="bg-[#001529]">
+        MainLayout header
+      </Header>
       <Content>
         <Outlet />
       </Content>
-      <Footer style={footerStyle}>MainLayout footer</Footer>
+      <Footer style={footerStyle} className="bg-[#001529]">
+        小码问卷 @2023 - present. Created by 小码
+      </Footer>
     </Layout>
   );
 };
