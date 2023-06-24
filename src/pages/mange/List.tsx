@@ -2,8 +2,10 @@ import React, { FC, useState } from "react";
 import QuestionCard from "../../components/QuestionCard";
 import Header from "../../components/Header";
 import { listData } from "../../mock";
+import { useTitle } from "ahooks";
 
 const List: FC = () => {
+  useTitle("小码问卷 - 问卷列表")
   const [questionList, setQuestionList] = useState(listData);
   const onStart = (id: number, isStarted: boolean) => {
     setQuestionList((list) => {
@@ -20,7 +22,7 @@ const List: FC = () => {
     });
   };
   return (
-    <div className="w-full bg-[#ece9e9] p-5">
+    <div className="w-full bg-[#e4e8e8fe] p-5">
       <Header />
       {questionList.map((item) => {
         const props = { ...item, onStart };

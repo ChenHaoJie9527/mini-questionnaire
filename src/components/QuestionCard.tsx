@@ -37,8 +37,8 @@ const QuestionCard: FC<props> = (props) => {
         bordered={false}
         hoverable={true}
       >
-        <div className="flex items-center justify-between">
-          <div className="flex">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex flex-wrap">
             <Button type="link" className="flex items-center justify-center">
               <EditOutlined /> 问卷调查
             </Button>
@@ -49,7 +49,7 @@ const QuestionCard: FC<props> = (props) => {
               <LineChartOutlined /> 数据统计
             </Button>
           </div>
-          <div className="flex">
+          <div className="flex flex-wrap">
             <Button
               type="link"
               className="text-[#ccc] flex items-center justify-center"
