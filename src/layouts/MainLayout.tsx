@@ -22,11 +22,11 @@ const footerStyle: React.CSSProperties = {
 const MainLayout: FC = () => {
   return (
     <Layout>
-      <Header style={headerStyle}>header</Header>
+      <Header style={headerStyle}>MainLayout header</Header>
       <Content>
         <Outlet />
       </Content>
-      <Footer style={footerStyle}>footer</Footer>
+      <Footer style={footerStyle}>MainLayout footer</Footer>
     </Layout>
   );
 };

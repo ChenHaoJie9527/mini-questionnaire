@@ -1,11 +1,11 @@
 import React from "react";
-import List from "./pages/mange/List";
+import { RouterProvider } from "react-router-dom";
+import routers from "./routers";
 
 function App() {
   return (
     <div className="container">
-      <h1 className="text-3xl text-center w-full font-black">问卷调查</h1>
-      <List />
+      <RouterProvider router={routers}></RouterProvider>
     </div>
   );
 }
