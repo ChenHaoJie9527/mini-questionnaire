@@ -1,5 +1,5 @@
 import React from "react";
-import List from "./pages/List";
+import List from "./pages/mange/List";
 
 function App() {
   return (

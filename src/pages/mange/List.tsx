@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
-import QuestionCard from "../components/QuestionCard";
-import Header from "../components/Header";
-import { listData } from "../mock";
+import QuestionCard from "../../components/QuestionCard";
+import Header from "../../components/Header";
+import { listData } from "../../mock";
 
 const List: FC = () => {
   const [questionList, setQuestionList] = useState(listData);
