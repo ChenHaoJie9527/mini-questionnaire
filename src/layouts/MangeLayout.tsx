@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Layout, Space, Button, Divider } from "antd";
 import {
   PlusOutlined,
@@ -22,6 +22,10 @@ const siderStyle: React.CSSProperties = {
 
 const MangeLayout: FC = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const hasPathName = (path: string) => {
+    return pathname.startsWith(path) ? "default" : "link";
+  };
   return (
     <Layout hasSider>
       <Sider style={siderStyle}>
@@ -36,21 +40,21 @@ const MangeLayout: FC = () => {
             </Button>
             <Divider />
             <Button
-              type="link"
+              type={hasPathName("/mange/list")}
               className="flex items-center justify-center text-white"
               onClick={() => navigate({ pathname: "/mange/list" })}
             >
               <BarsOutlined /> 我的问卷
             </Button>
             <Button
-              type="link"
+              type={hasPathName("/mange/start")}
               className="flex items-center justify-center text-white"
               onClick={() => navigate({ pathname: "/mange/start" })}
             >
               <StarOutlined /> 星标问卷
             </Button>
             <Button
-              type="link"
+              type={hasPathName("/mange/trash")}
               className="flex items-center justify-center text-white"
               onClick={() => navigate({ pathname: "/mange/trash" })}
             >
