@@ -12,7 +12,6 @@ const headerStyle: React.CSSProperties = {
   minHeight: "64px",
   paddingInline: 50,
   lineHeight: "64px",
-  // backgroundImage: "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)",
 };
 
 const MainLayout: FC = () => {
@@ -30,7 +29,7 @@ const MainLayout: FC = () => {
       </Content>
       <Footer
         style={homeFooterTheme}
-        className="text-black text-center font-bold"
+        className="text-black text-center font-bold flex items-center justify-center"
       >
         小码问卷 @2023 - present. Created by 小码
       </Footer>
