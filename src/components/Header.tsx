@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import { Input } from "antd";
+import {Typography} from "antd"
 
+const {Title} = Typography;
 const { Search } = Input;
 
 const Header: FC = () => {
@@ -9,7 +11,7 @@ const Header: FC = () => {
   };
   return (
     <div className="w-full flex items-center justify-between">
-      <p className="text-2xl font-black">我的问卷</p>
+      <Title level={3}>我的问卷</Title>
       <Search
         placeholder="请输入标题..."
         onSearch={onSearch}
