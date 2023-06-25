@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { PATHNAME } from "../routers/config";
 
 type props = MyConstArrayItem & {
-  onStart: (id: number, isStarted: boolean) => void;
+  onStart?: (id: number, isStarted: boolean) => void;
 };
 
 const { confirm } = Modal;
@@ -34,7 +34,7 @@ const QuestionCard: FC<props> = (props) => {
     </div>
   );
   const onStarted = () => {
-    onStart(id, !isStarted);
+    onStart && onStart(id, !isStarted);
   };
   const Title = () => {
     return (

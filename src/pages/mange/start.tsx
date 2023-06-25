@@ -3,8 +3,10 @@ import { Empty } from "antd";
 import { startList } from "../../mock";
 import Header from "../../components/Header";
 import QuestionCard from "../../components/QuestionCard";
+import { useTitle } from "ahooks";
 
 const Start: FC = () => {
+  useTitle("小码问卷 - 星标问卷");
   const [list] = useState(startList);
   const onStart = (id: number) => {
     console.log("id", id);
