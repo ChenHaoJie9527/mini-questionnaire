@@ -63,6 +63,7 @@ export const startList = [
 export const statList = [
   {
     id: 1,
+    key: 1,
     title: "问卷1",
     isPublished: false,
     isStarted: true,
@@ -71,6 +72,7 @@ export const statList = [
   },
   {
     id: 2,
+    key: 2,
     title: "问卷2",
     isPublished: false,
     isStarted: false,
@@ -79,6 +81,7 @@ export const statList = [
   },
   {
     id: 3,
+    key: 3,
     title: "问卷3",
     isPublished: true,
     isStarted: false,

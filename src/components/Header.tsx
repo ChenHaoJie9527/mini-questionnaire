@@ -17,6 +17,7 @@ const Header: FC<Props> = ({ title }) => {
     <div className="w-full flex items-center justify-between">
       <Title level={3}>{title}</Title>
       <Search
+        name="title"
         placeholder="请输入标题..."
         onSearch={onSearch}
         style={{ width: 200 }}
