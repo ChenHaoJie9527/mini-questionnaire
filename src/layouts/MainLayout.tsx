@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
 import Logo from "../components/Logo";
 import UserInfo from "../components/UserInfo";
+import { homeFooterTheme } from "../themes";
 const { Header, Content, Footer } = Layout;
 
 const headerStyle: React.CSSProperties = {
@@ -26,7 +27,10 @@ const MainLayout: FC = () => {
       <Content>
         <Outlet />
       </Content>
-      <Footer className="bg-[#e4e8e8fe] text-black text-center font-bold">
+      <Footer
+        style={homeFooterTheme}
+        className="text-black text-center font-bold"
+      >
         小码问卷 @2023 - present. Created by 小码
       </Footer>
     </Layout>
