@@ -1,12 +1,13 @@
 import React, { FC } from "react";
 import { MyConstArrayItem } from "../mock";
-import { Card, Space, Button, Tag } from "antd";
+import { Card, Space, Button, Tag, Popconfirm, Modal, message } from "antd";
 import {
   EditOutlined,
   LineChartOutlined,
   CopyOutlined,
   StarOutlined,
   DeleteOutlined,
+  ExclamationOutlined,
 } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { PATHNAME } from "../routers/config";
@@ -14,6 +15,8 @@ import { PATHNAME } from "../routers/config";
 type props = MyConstArrayItem & {
   onStart: (id: number, isStarted: boolean) => void;
 };
+
+const { confirm } = Modal;
 
 const QuestionCard: FC<props> = (props) => {
   const nav = useNavigate();
@@ -44,6 +47,18 @@ const QuestionCard: FC<props> = (props) => {
         </Space>
       </Link>
     );
+  };
+  const onCopy = () => {
+    message.success("复制成功");
+  };
+  const onDel = () => {
+    confirm({
+      title: "确定删除该问卷？",
+      icon: <ExclamationOutlined />,
+      onOk: () => {
+        message.info("删除成功");
+      },
+    });
   };
   return (
     <Space direction="vertical" size="large" className="flex mt-4">
@@ -84,16 +99,24 @@ const QuestionCard: FC<props> = (props) => {
               )}
               {isStarted ? "取消标星" : "标星"}
             </Button>
-            <Button
-              type="link"
-              className="text-[#ccc] flex items-center justify-center"
+            <Popconfirm
+              title="确定复制该问卷？"
+              okText="确定"
+              cancelText="取消"
+              onConfirm={onCopy}
             >
-              <CopyOutlined />
-              复制
-            </Button>
+              <Button
+                type="link"
+                className="text-[#ccc] flex items-center justify-center"
+              >
+                <CopyOutlined />
+                复制
+              </Button>
+            </Popconfirm>
             <Button
               type="link"
               className="text-[#ccc] flex items-center justify-center"
+              onClick={onDel}
             >
               <DeleteOutlined />
               删除

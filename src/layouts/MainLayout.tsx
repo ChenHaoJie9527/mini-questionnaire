@@ -12,7 +12,7 @@ const headerStyle: React.CSSProperties = {
   minHeight: "64px",
   paddingInline: 50,
   lineHeight: "64px",
-  backgroundImage: "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)",
+  // backgroundImage: "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)",
 };
 
 const MainLayout: FC = () => {
