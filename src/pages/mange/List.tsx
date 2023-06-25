@@ -22,7 +22,7 @@ const List: FC = () => {
     });
   };
   return (
-    <div className="w-full bg-[#e4e8e8fe] p-5">
+    <div className="w-full p-5">
       <Header />
       {questionList.map((item) => {
         const props = { ...item, onStart };

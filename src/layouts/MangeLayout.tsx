@@ -14,10 +14,12 @@ const contentStyle: React.CSSProperties = {
   minHeight: 120,
   lineHeight: "120px",
   color: "#fff",
+  backgroundImage: "linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%)"
 };
 
 const siderStyle: React.CSSProperties = {
   padding: "10px",
+  backgroundImage: "linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%",
 };
 
 const MangeLayout: FC = () => {
