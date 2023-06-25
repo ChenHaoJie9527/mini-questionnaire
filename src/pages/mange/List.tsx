@@ -5,7 +5,7 @@ import { listData } from "../../mock";
 import { useTitle } from "ahooks";
 
 const List: FC = () => {
-  useTitle("小码问卷 - 问卷列表")
+  useTitle("小码问卷 - 问卷列表");
   const [questionList, setQuestionList] = useState(listData);
   const onStart = (id: number, isStarted: boolean) => {
     setQuestionList((list) => {
@@ -23,12 +23,12 @@ const List: FC = () => {
   };
   return (
     <div className="w-full p-5">
-      <Header />
+      <Header title="我的问卷" />
       {questionList.map((item) => {
         const props = { ...item, onStart };
         return <QuestionCard {...props} key={item.id} />;
       })}
-      <div>footer</div>
+      <div>加载更多......</div>
     </div>
   );
 };

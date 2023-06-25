@@ -1,17 +1,21 @@
 import React, { FC } from "react";
 import { Input } from "antd";
-import {Typography} from "antd"
+import { Typography } from "antd";
 
-const {Title} = Typography;
+const { Title } = Typography;
 const { Search } = Input;
 
-const Header: FC = () => {
+interface Props {
+  title: string;
+}
+
+const Header: FC<Props> = ({ title }) => {
   const onSearch = (value: string) => {
     console.log(value);
   };
   return (
     <div className="w-full flex items-center justify-between">
-      <Title level={3}>我的问卷</Title>
+      <Title level={3}>{title}</Title>
       <Search
         placeholder="请输入标题..."
         onSearch={onSearch}
