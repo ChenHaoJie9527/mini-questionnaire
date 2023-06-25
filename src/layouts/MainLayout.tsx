@@ -13,22 +13,20 @@ const headerStyle: React.CSSProperties = {
   lineHeight: "64px",
 };
 
-const footerStyle: React.CSSProperties = {
-  textAlign: "center",
-  color: "#fff",
-};
-
 const MainLayout: FC = () => {
   return (
     <Layout>
-      <Header style={headerStyle} className="bg-[#001529] flex items-center justify-between">
+      <Header
+        style={headerStyle}
+        className="bg-[#001529] flex items-center justify-between"
+      >
         <Logo />
         <UserInfo />
       </Header>
       <Content>
         <Outlet />
       </Content>
-      <Footer style={footerStyle} className="bg-[#001529]">
+      <Footer className="bg-[#e4e8e8fe] text-black text-center font-bold">
         小码问卷 @2023 - present. Created by 小码
       </Footer>
     </Layout>

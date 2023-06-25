@@ -24,7 +24,7 @@ const MangeLayout: FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const hasPathName = (path: string) => {
-    return pathname.startsWith(path) ? "default" : "link";
+    return pathname.startsWith(path) ? "primary" : "link";
   };
   return (
     <Layout hasSider>
@@ -32,6 +32,7 @@ const MangeLayout: FC = () => {
         <div className="flex items-center flex-col">
           <Space direction="vertical">
             <Button
+              type="primary"
               size="large"
               className="flex items-center justify-center text-white"
             >
