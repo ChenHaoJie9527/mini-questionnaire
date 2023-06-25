@@ -69,3 +69,14 @@ export const routes = [
     ],
   },
 ];
+
+export enum PATHNAME {
+  HOME = "/",
+  LOGIN = "/login",
+  REGISTER = "/register",
+  LIST = "/mange/list",
+  START = "/mange/start",
+  TRASH = "/mange/trash",
+  EDIT = "/question/edit",
+  STAT = "/question/stat",
+}

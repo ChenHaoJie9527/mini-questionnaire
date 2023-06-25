@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
 import Logo from "../components/Logo";
+import UserInfo from "../components/UserInfo";
 const { Header, Content, Footer } = Layout;
 
 const headerStyle: React.CSSProperties = {
@@ -20,8 +21,9 @@ const footerStyle: React.CSSProperties = {
 const MainLayout: FC = () => {
   return (
     <Layout>
-      <Header style={headerStyle} className="bg-[#001529]">
+      <Header style={headerStyle} className="bg-[#001529] flex items-center justify-between">
         <Logo />
+        <UserInfo />
       </Header>
       <Content>
         <Outlet />
