@@ -28,7 +28,7 @@ const MainLayout: FC = () => {
         <Outlet />
       </Content>
       <Footer
-        style={homeFooterTheme}
+        style={{ ...homeFooterTheme }}
         className="text-black text-center font-bold flex items-center justify-center"
       >
         小码问卷 @2023 - present. Created by 小码

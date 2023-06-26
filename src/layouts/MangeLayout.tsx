@@ -14,19 +14,19 @@ const contentStyle: React.CSSProperties = {
   minHeight: 120,
   lineHeight: "120px",
   color: "#fff",
-  backgroundImage: "linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%)"
+  background: "#cece",
 };
 
 const siderStyle: React.CSSProperties = {
   padding: "10px",
-  backgroundImage: "linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%",
+  background: "#cece"
 };
 
 const MangeLayout: FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const hasPathName = (path: string) => {
-    return pathname.startsWith(path) ? "primary" : "link";
+    return pathname.startsWith(path) ? "default" : "link";
   };
   return (
     <Layout hasSider>
@@ -34,9 +34,10 @@ const MangeLayout: FC = () => {
         <div className="flex items-center flex-col">
           <Space direction="vertical">
             <Button
-              type="primary"
+              type="default"
+              style={{background: "#fff"}}
               size="large"
-              className="flex items-center justify-center text-white"
+              className="flex items-center justify-center text-black"
             >
               <PlusOutlined />
               新建问卷
@@ -44,21 +45,21 @@ const MangeLayout: FC = () => {
             <Divider />
             <Button
               type={hasPathName("/mange/list")}
-              className="flex items-center justify-center text-white"
+              className="flex items-center justify-center text-black"
               onClick={() => navigate({ pathname: "/mange/list" })}
             >
               <BarsOutlined /> 我的问卷
             </Button>
             <Button
               type={hasPathName("/mange/start")}
-              className="flex items-center justify-center text-white"
+              className="flex items-center justify-center text-black"
               onClick={() => navigate({ pathname: "/mange/start" })}
             >
               <StarOutlined /> 星标问卷
             </Button>
             <Button
               type={hasPathName("/mange/trash")}
-              className="flex items-center justify-center text-white"
+              className="flex items-center justify-center text-black"
               onClick={() => navigate({ pathname: "/mange/trash" })}
             >
               <DeleteOutlined /> 回收站

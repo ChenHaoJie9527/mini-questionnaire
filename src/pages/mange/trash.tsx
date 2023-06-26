@@ -56,7 +56,7 @@ const Trash: FC = () => {
   };
 
   return (
-    <div className="w-full p-5">
+    <div className="w-full p-5" style={{ height: "calc(100vh - 64px - 90px)" }}>
       <Header title="回收站" />
       {list.length === 0 && <Empty description="暂无数据" />}
       {list.length > 0 && (
