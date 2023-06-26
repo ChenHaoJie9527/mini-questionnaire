@@ -1,5 +1,6 @@
 {
   "editor.codeActionsOnSave": {
     "source.fixAll.eslit": true
-  }
+  },
+  "cSpell.words": ["checkeds"]
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
 export const homeTheme: React.CSSProperties = {
-  backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)",
+  background: "#cece",
   height: "calc(100vh - 64px - 90px)",
 };
 
