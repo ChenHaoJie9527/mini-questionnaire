@@ -18,6 +18,7 @@ export async function getUserName(url: string, params: { username: string, uid: 
   return res;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function checkResult(err: any, result: any) {
   if (!err && result) {
     // window.$message.success(result.message);
