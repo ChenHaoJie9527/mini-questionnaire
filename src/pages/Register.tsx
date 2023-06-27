@@ -9,7 +9,7 @@ const { Title } = Typography;
 interface FormData {
   nickname: string;
   password: string;
-  username: string
+  username: string;
 }
 
 const Register: FC = () => {
@@ -33,14 +33,57 @@ const Register: FC = () => {
         <Form.Item
           label="用户名"
           name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          hasFeedback
+          rules={[
+            { required: true, message: "请输入用户名" },
+            {
+              type: "string",
+              min: 5,
+              max: 20,
+              message: "字符长度在 5 - 20 之间",
+            },
+            {
+              pattern: /^\w+$/,
+              message: "只能是字母数字下划线",
+            },
+          ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
           label="密码"
           name="password"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          hasFeedback
+          rules={[
+            { required: true, message: "请输入密码" },
+            {
+              type: "string",
+              min: 6,
+              max: 18,
+              message: "密码长度在 6 - 18 之间",
+            },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
+        <Form.Item
+          label="确认密码"
+          name="confirm password"
+          hasFeedback
+          dependencies={['password']} // 依赖 password 选项 即 password 发生变化 会重新触发该输入框的 validator验证
+          rules={[
+            { required: true, message: "请输入密码" },
+            ({ getFieldValue }) => ({
+              validator(rule, value) {
+                console.log("rule: ", rule);
+                if (!value || getFieldValue("password") === value) {
+                  return Promise.resolve();
+                } else {
+                  return Promise.reject(new Error("两次密码不一致"));
+                }
+              },
+            }),
+          ]}
         >
           <Input.Password />
         </Form.Item>
