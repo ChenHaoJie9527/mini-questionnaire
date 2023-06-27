@@ -74,10 +74,39 @@ const Login: FC = () => {
           onFinish={onFinish}
           initialValues={{ remember: true }} // 设置初始值
         >
-          <Form.Item label="用户名" name="username">
+          <Form.Item
+            label="用户名"
+            name="username"
+            hasFeedback
+            rules={[
+              { required: true, message: "请输入用户名" },
+              {
+                type: "string",
+                min: 5,
+                max: 20,
+                message: "字符长度在 5 - 20 之间",
+              },
+              {
+                pattern: /^\w+$/,
+                message: "只能是字母数字下划线",
+              },
+            ]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item label="密码" name="password">
+          <Form.Item
+            label="密码"
+            name="password"
+            rules={[
+              { required: true, message: "请输入密码" },
+              {
+                type: "string",
+                min: 6,
+                max: 18,
+                message: "密码长度在 6 - 18 之间",
+              },
+            ]}
+          >
             <Input.Password />
           </Form.Item>
           <Form.Item
