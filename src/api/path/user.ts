@@ -14,12 +14,13 @@ export async function getUserInfo(
 
 export async function getUserName(url: string, params: { username: string, uid: number }) {
   const [err, result] = await Post(`${urlSuffix}/${url}`, params);
-  console.log(err, result);
-  return checkResult(err, result);
+  const res = checkResult(err, result);
+  return res;
 }
 
-function checkResult(err: unknown, result: unknown) {
+function checkResult(err: any, result: any) {
   if (!err && result) {
+    // window.$message.success(result.message);
     return result;
   }
   return null;

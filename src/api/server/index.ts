@@ -19,7 +19,7 @@ interface FcResponse<T> {
   data: T;
 }
 
-type Fn = (data: FcResponse<unknown>) => unknown;
+type Fn = (data: FcResponse<any>) => unknown;
 
 axios.interceptors.request.use((config) => {
   config = handleRequestHeader(config);
@@ -29,6 +29,7 @@ axios.interceptors.request.use((config) => {
 
 axios.interceptors.response.use(
   (response) => {
+    console.log("response：", response);
     if (response.status !== 200) return Promise.reject(response.data);
 
     handleAuthError(response.data.error);
@@ -38,15 +39,15 @@ axios.interceptors.response.use(
   },
   (err) => {
     handleNetworkError(err.response.status);
-    Promise.reject(err.response);
+    Promise.reject(err.response.data);
   }
 );
 
-export const Get = <T = unknown>(
+export const Get = <T = any>(
   url: string,
   params: IAnyObj = {},
   clearFn?: Fn
-): Promise<[unknown, FcResponse<T> | undefined]> => {
+): Promise<[any, FcResponse<T> | undefined]> => {
   return new Promise((resolve) => {
     axios
       .get(url, { params })
@@ -69,8 +70,7 @@ export const Post = <T>(
   url: string,
   data: IAnyObj,
   params: IAnyObj = {}
-): Promise<[unknown, FcResponse<T> | undefined]> => {
-  console.log(params);
+): Promise<[any, FcResponse<T> | undefined]> => {
   return new Promise((resolve) => {
     axios({
       url,

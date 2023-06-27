@@ -16,17 +16,17 @@ interface FormData {
 
 const Login: FC = () => {
   const [form] = Form.useForm(); // 获取Form实例对象
+
   const onFinish = async (values: FormData) => {
     if (values && values.remember) {
       setLocal(values);
     } else {
       removeLocal();
     }
-    const [err, result] = await api.getUserName('/login', {
+    const result = await api.getUserName('login', {
       username: 'admin',
       uid: 1
     });
-    console.log('err', err);
     console.log('result', result);
   };
   const setLocal = (values: FormData) => {
@@ -53,7 +53,6 @@ const Login: FC = () => {
   useEffect(() => {
     const result = getLocal();
     if (result) {
-      console.log(result);
       form.setFieldsValue({
         username: result.PASSWORD,
         password: result.REMEMBER,

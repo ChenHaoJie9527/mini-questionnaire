@@ -8,6 +8,8 @@ interface LoginBody {
 interface LoginResponse {
   username: string;
   firstName: string;
+  status: string;
+  msg: string;
 }
 
 function login() {
@@ -17,18 +19,24 @@ function login() {
    * res: 用于创建模拟响应的功能实用程序
    * ctx: 一组有助于设置状态代码、标头、正文等的函数。
    */
-  return rest.post<LoginBody, LoginResponse>(
-    "/login",
-    async (req, res, ctx) => {
-      const { username } = await req.json();
-      console.log("username: ", username);
-      const result = ctx.json({
+  return rest.post("/api/login", async (req, res, ctx) => {
+    const { username, uid } = await req.json<LoginBody>();
+    if (username === "admin" && uid === 1) {
+      const result = ctx.json<LoginResponse>({
         username,
         firstName: "John",
+        status: "200",
+        msg: "success",
+      });
+      return res(ctx.status(200), result);
+    } else {
+      const result = ctx.json({
+        status: 400,
+        msg: "账号密码不正确",
       });
       return res(ctx.status(200), result);
     }
-  );
+  });
 }
 
 function user() {
