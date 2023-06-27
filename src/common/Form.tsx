@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC } from "react";
+import React, { FC } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 interface Inputs {
