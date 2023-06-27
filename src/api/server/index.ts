@@ -19,7 +19,7 @@ interface FcResponse<T> {
   data: T;
 }
 
-type Fn = (data: FcResponse<any>) => unknown;
+type Fn = (data: FcResponse<unknown>) => unknown;
 
 axios.interceptors.request.use((config) => {
   config = handleRequestHeader(config);
@@ -42,11 +42,11 @@ axios.interceptors.response.use(
   }
 );
 
-export const Get = <T = any>(
+export const Get = <T = unknown>(
   url: string,
   params: IAnyObj = {},
   clearFn?: Fn
-): Promise<[any, FcResponse<T> | undefined]> => {
+): Promise<[unknown, FcResponse<T> | undefined]> => {
   return new Promise((resolve) => {
     axios
       .get(url, { params })
@@ -69,7 +69,7 @@ export const Post = <T>(
   url: string,
   data: IAnyObj,
   params: IAnyObj = {}
-): Promise<[any, FcResponse<T> | undefined]> => {
+): Promise<[unknown, FcResponse<T> | undefined]> => {
   console.log(params);
   return new Promise((resolve) => {
     axios({

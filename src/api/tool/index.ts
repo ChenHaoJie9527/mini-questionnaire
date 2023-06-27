@@ -1,14 +1,12 @@
 import { InternalAxiosRequestConfig } from "axios";
 import type { AuthErrorMap, NetworkErrorState } from "./type";
 // 业务处理函数
-export const handleRequestHeader = (
-  config: InternalAxiosRequestConfig<any>
-) => {
+export const handleRequestHeader = (config: InternalAxiosRequestConfig<unknown>) => {
   // config["xxx"] = "xxx";
   return config;
 };
 
-export const handleAuth = (config: InternalAxiosRequestConfig<any>) => {
+export const handleAuth = (config: InternalAxiosRequestConfig<unknown>) => {
   config.headers["token"] = localStorage.getItem("token") || "";
   return config;
 };
@@ -67,7 +65,7 @@ export const handleGeneralError = (errno: string, errmsg: string) => {
   return true;
 };
 
-export function checkResult(err: any, result: any) {
+export function checkResult(err: unknown, result: unknown) {
   if (!err && result) {
     // window.$message.success(result.message);
     return result;

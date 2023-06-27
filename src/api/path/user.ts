@@ -18,7 +18,7 @@ export async function getUserName(url: string, params: { username: string, uid: 
   return checkResult(err, result);
 }
 
-function checkResult(err: any, result: any) {
+function checkResult(err: unknown, result: unknown) {
   if (!err && result) {
     return result;
   }
