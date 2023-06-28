@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { InternalAxiosRequestConfig } from "axios";
 import type { AuthErrorMap, NetworkErrorState } from "./type";
-import { message } from "antd";
-
-const [messageApi] = message.useMessage();
+import useMessage from "../../hooks/useMessage";
 
 // 业务处理函数
 export const handleRequestHeader = (
@@ -34,18 +32,14 @@ export const handleNetworkError = (errorState: NetworkErrorState) => {
     "505": "http版本不支持该请求",
   };
   if (errorState) {
-    messageApi.open({
-      type: "error",
-      content: networkErrMap[errorState] ?? `其他连接错误 --${errorState}`,
-    });
+    useMessage(
+      "error",
+      networkErrMap[errorState] ?? `其他连接错误 --${errorState}`
+    );
 
     return networkErrMap[errorState] ?? `其他连接错误 --${errorState}`;
   }
-  // window.$message.error("网络繁忙");
-  messageApi.open({
-    type: "error",
-    content: "网络繁忙",
-  });
+  useMessage("error", "网络繁忙");
 };
 
 export const handleAuthError = (error: AuthErrorMap) => {
@@ -60,13 +54,7 @@ export const handleAuthError = (error: AuthErrorMap) => {
     "10038": "账号未找到",
   };
   if (authErrMap[error]) {
-    // window.$message.error(authErrMap[error]);
-    // 授权错误，登出账户
-    // logout();
-    messageApi.open({
-      type: "error",
-      content: authErrMap[error],
-    });
+    useMessage("error", authErrMap[error]);
     return false;
   }
   return true;
@@ -74,8 +62,7 @@ export const handleAuthError = (error: AuthErrorMap) => {
 
 export const handleGeneralError = (error: string, message: string) => {
   if (error === "0") {
-    // window.$message.error(errmsg);
-    console.log(message);
+    useMessage("error", message);
     return false;
   }
 
@@ -84,11 +71,7 @@ export const handleGeneralError = (error: string, message: string) => {
 
 export function checkResult(err: any, result: any) {
   if (!err && result) {
-    // window.$message.success(result.message);
-    messageApi.open({
-      type: "error",
-      content: result.message,
-    });
+    useMessage("success", result.message);
     return result;
   }
   return null;

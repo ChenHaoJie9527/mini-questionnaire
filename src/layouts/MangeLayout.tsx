@@ -7,7 +7,10 @@ import {
   StarOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
+import { api } from "../api";
 const { Sider, Content } = Layout;
+
+const {createQuestion} = api;
 
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
@@ -28,6 +31,10 @@ const MangeLayout: FC = () => {
   const hasPathName = (path: string) => {
     return pathname.startsWith(path) ? "default" : "link";
   };
+  const onCreate = async () => {
+    const result =  await createQuestion("question", {username: '123', uid: 1});
+    console.log("result: ", result);
+  }
   return (
     <Layout hasSider>
       <Sider style={siderStyle}>
@@ -38,6 +45,7 @@ const MangeLayout: FC = () => {
               style={{background: "#fff"}}
               size="large"
               className="flex items-center justify-center text-black"
+              onClick={onCreate}
             >
               <PlusOutlined />
               新建问卷

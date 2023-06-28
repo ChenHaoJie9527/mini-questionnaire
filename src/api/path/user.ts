@@ -1,3 +1,4 @@
+import { checkResult } from "../../utils";
 import { Get, Post } from "../server";
 
 const urlSuffix = "/api";
@@ -18,14 +19,6 @@ export async function getUserName(url: string, params: { username: string, uid: 
   return res;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function checkResult(err: any, result: any) {
-  if (!err && result) {
-    // window.$message.success(result.message);
-    return result;
-  }
-  return null;
-}
 
 export const userApi = {
   getUserInfo,
