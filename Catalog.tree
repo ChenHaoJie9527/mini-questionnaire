@@ -1,0 +1,94 @@
+├── .eslintrc.js
+├── .gitignore
+├── .husky
+│  ├── _
+│  │  ├── .gitignore
+│  │  └── husky.sh
+│  └── pre-commit
+├── .vscode
+│  └── settings.json
+├── craco.config.js
+├── package-lock.json
+├── package.json
+├── public
+│  ├── favicon.ico
+│  ├── index.html
+│  ├── logo192.png
+│  ├── logo512.png
+│  ├── manifest.json
+│  ├── mockServiceWorker.js
+│  └── robots.txt
+├── README.md
+├── src
+│  ├── api
+│  │  ├── index.ts
+│  │  ├── path
+│  │  │  └── user.ts
+│  │  ├── server
+│  │  │  └── index.ts
+│  │  └── tool
+│  │    ├── index.ts
+│  │    └── type.ts
+│  ├── App.css
+│  ├── App.tsx
+│  ├── common
+│  │  ├── Checkbox.tsx
+│  │  ├── CloseurTrap.tsx
+│  │  ├── Form.tsx
+│  │  ├── ListSearch.tsx
+│  │  ├── QuestionItem.tsx
+│  │  ├── Radio.tsx
+│  │  ├── Select.tsx
+│  │  └── Toggle.tsx
+│  ├── components
+│  │  ├── Header.tsx
+│  │  ├── Logo.tsx
+│  │  ├── QuestionCard.tsx
+│  │  ├── Test.tsx
+│  │  └── UserInfo.tsx
+│  ├── contans
+│  │  └── index.ts
+│  ├── hooks
+│  │  ├── index.ts
+│  │  ├── useGetSearchParams.ts
+│  │  ├── useImmer.ts
+│  │  └── useToggle.ts
+│  ├── index.css
+│  ├── index.tsx
+│  ├── layouts
+│  │  ├── MainLayout.tsx
+│  │  ├── MangeLayout.tsx
+│  │  └── QuestionLayout.tsx
+│  ├── logo.svg
+│  ├── miniwindow.d.ts
+│  ├── mock
+│  │  ├── browser.ts
+│  │  ├── handlers.ts
+│  │  ├── index.ts
+│  │  └── server.ts
+│  ├── pages
+│  │  ├── Home.tsx
+│  │  ├── Login.tsx
+│  │  ├── mange
+│  │  │  ├── List.tsx
+│  │  │  ├── start.tsx
+│  │  │  └── trash.tsx
+│  │  ├── NotFond.tsx
+│  │  ├── question
+│  │  │  ├── Edit
+│  │  │  │  └── index.tsx
+│  │  │  └── Stat
+│  │  │    └── index.tsx
+│  │  └── Register.tsx
+│  ├── react-app-env.d.ts
+│  ├── reportWebVitals.ts
+│  ├── routers
+│  │  ├── config.tsx
+│  │  └── index.tsx
+│  ├── setupTests.ts
+│  ├── test
+│  │  └── index.ts
+│  └── themes
+│    └── index.tsx
+├── tailwind.config.js
+└── tsconfig.json

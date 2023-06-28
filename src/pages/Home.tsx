@@ -13,7 +13,7 @@ const Home: FC = () => {
           已累计创建问卷 100 份，发布问卷 90 份，收到答卷 1000份
         </Paragraph>
         <div>
-          <Button type="primary" size="large">
+          <Button type="default" size="large">
             开始使用
           </Button>
         </div>
