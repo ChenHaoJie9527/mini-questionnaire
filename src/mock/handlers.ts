@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { rest } from "msw";
+import createUuid from "./uuid";
 
 interface LoginBody {
   username: string;
@@ -93,7 +94,7 @@ function userInfo() {
 interface CreateResponse {
   code: number;
   data: {
-    id: number;
+    id: string;
   };
 }
 function createQuestionnaire() {
@@ -101,7 +102,7 @@ function createQuestionnaire() {
     const result = ctx.json<CreateResponse>({
       code: 0,
       data: {
-        id: 1,
+        id: createUuid(),
       },
     });
     return res(result);
