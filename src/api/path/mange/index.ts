@@ -8,7 +8,7 @@ async function createQuestion(
   params: Record<string, any> = {}
 ) {
   const [err, result] = await Post(`${urlSuffix}/${url}`, params);
-  return checkResult(err, result);
+  return await checkResult(err, result);
 }
 
 export { createQuestion };

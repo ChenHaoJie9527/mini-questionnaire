@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Layout, Space, Button, Divider } from "antd";
 import {
@@ -8,9 +8,11 @@ import {
   DeleteOutlined,
 } from "@ant-design/icons";
 import { api } from "../api";
+import { PATHNAME } from "../routers/config";
+import useMessage from "../hooks/useMessage";
 const { Sider, Content } = Layout;
 
-const {createQuestion} = api;
+const { createQuestion } = api;
 
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
@@ -22,27 +24,37 @@ const contentStyle: React.CSSProperties = {
 
 const siderStyle: React.CSSProperties = {
   padding: "10px",
-  background: "#cece"
+  background: "#cece",
 };
 
 const MangeLayout: FC = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const { pathname } = useLocation();
   const hasPathName = (path: string) => {
     return pathname.startsWith(path) ? "default" : "link";
   };
   const onCreate = async () => {
-    const result =  await createQuestion("question", {username: '123', uid: 1});
-    console.log("result: ", result);
-  }
+    setLoading(true);
+    const result = await createQuestion("question", {
+      username: "123",
+      uid: 1,
+    });
+    setLoading(false);
+    if (result && result.code === 0) {
+      useMessage("success", "创建成功");
+      navigate(`${PATHNAME.EDIT}/${result.data.id}`);
+    }
+  };
   return (
     <Layout hasSider>
       <Sider style={siderStyle}>
         <div className="flex items-center flex-col">
           <Space direction="vertical">
             <Button
+              loading={loading}
               type="default"
-              style={{background: "#fff"}}
+              style={{ background: "#fff" }}
               size="large"
               className="flex items-center justify-center text-black"
               onClick={onCreate}
