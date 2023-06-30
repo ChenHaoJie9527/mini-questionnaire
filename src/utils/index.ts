@@ -4,17 +4,10 @@ import { Random } from "mockjs";
 export async function checkResult(
   err: any,
   result: any
-): Promise<Record<string, any> | null> {
-  if (!err && result) {
-    return await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(result);
-      }, 1000);
-    });
-  }
+): Promise<Record<string, any>> {
   return await new Promise((resolve) => {
     setTimeout(() => {
-      resolve(null);
+      resolve(result);
     }, 1000);
   });
 }

@@ -6,14 +6,18 @@ const urlSuffix = "/api";
 interface Params {
   username: string;
   uid: number;
+  keywordId: string;
 }
 
-async function createQuestion(url: "question", params: Params) {
+type ParamsProps = Partial<Params>;
+
+async function createQuestion(url: "question", params: ParamsProps = {}) {
   const [err, result] = await Post(`${urlSuffix}/${url}`, params);
   return await checkResult(err, result);
 }
 
-async function getQuestionDataList(url: "questions", params = {}) {
+
+async function getQuestionDataList(url = "questions", params: ParamsProps = {}) {
   const [err, result] = await Get(`${urlSuffix}/${url}`, params);
   return await checkResult(err, result);
 }
