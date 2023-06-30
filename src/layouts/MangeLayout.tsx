@@ -9,6 +9,7 @@ import {
 } from "@ant-design/icons";
 import { api } from "../api";
 import { useRequest } from "ahooks";
+import { PATHNAME } from "../routers/config";
 const { Sider, Content } = Layout;
 
 const { createQuestion } = api;
@@ -34,7 +35,13 @@ const MangeLayout: FC = () => {
   };
   const { loading, run: onCreate } = useRequest(createQuestion, {
     manual: true,
+    onSuccess(result) {
+      if (result) {
+        navigate(`${PATHNAME.EDIT}/${result.data.id}`);
+      }
+    },
   });
+
   return (
     <Layout hasSider>
       <Sider style={siderStyle}>

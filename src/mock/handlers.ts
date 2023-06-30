@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { rest } from "msw";
-import createUuid from "./uuid";
+import { Random } from "mockjs";
 
 interface LoginBody {
   username: string;
@@ -102,7 +102,7 @@ function createQuestionnaire() {
     const result = ctx.json<CreateResponse>({
       code: 0,
       data: {
-        id: createUuid(),
+        id: Random.id()
       },
     });
     return res(result);
