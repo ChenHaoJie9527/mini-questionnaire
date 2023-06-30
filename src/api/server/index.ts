@@ -12,7 +12,7 @@ import {
 } from "../tool";
 
 interface IAnyObj {
-  [index: string]: unknown;
+  [index: string]: any;
 }
 
 interface FcResponse<T> {

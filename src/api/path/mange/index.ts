@@ -3,10 +3,12 @@ import { checkResult } from "../../../utils";
 import { Post } from "../../server";
 const urlSuffix = "/api";
 
-async function createQuestion(
-  url: "question",
-  params: Record<string, any> = {}
-) {
+interface Params {
+  username: string;
+  uid: number;
+}
+
+async function createQuestion(url: "question", params: Params) {
   const [err, result] = await Post(`${urlSuffix}/${url}`, params);
   return await checkResult(err, result);
 }
