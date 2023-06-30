@@ -8,7 +8,7 @@ import { useTitle } from "ahooks";
 const Start: FC = () => {
   useTitle("小码问卷 - 星标问卷");
   const [list] = useState(startList);
-  const onStart = (id: number) => {
+  const onStart = (id: string) => {
     console.log("id", id);
   };
   return (

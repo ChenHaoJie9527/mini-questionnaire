@@ -1,6 +1,5 @@
 import React, { FC } from "react";
-import { MyConstArrayItem } from "../mock";
-import { Card, Space, Button, Tag, Popconfirm, Modal, message } from "antd";
+import { Card, Space, Button, Tag, Modal, message, Popconfirm } from "antd";
 import {
   EditOutlined,
   LineChartOutlined,
@@ -11,14 +10,15 @@ import {
 } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { PATHNAME } from "../routers/config";
-
-type props = MyConstArrayItem & {
-  onStart?: (id: number, isStarted: boolean) => void;
-};
+import { QuestionListType } from "../utils";
 
 const { confirm } = Modal;
 
-const QuestionCard: FC<props> = (props) => {
+interface Props extends QuestionListType {
+  onStart: (id: string, isStarted: boolean) => void;
+}
+
+const QuestionCard: FC<Props> = (props) => {
   const nav = useNavigate();
   const { id, title, isPublished, isStarted, answerCount, createAt, onStart } =
     props;

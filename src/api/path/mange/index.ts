@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { checkResult } from "../../../utils";
-import { Post } from "../../server";
+import { Get, Post } from "../../server";
 const urlSuffix = "/api";
 
 interface Params {
@@ -13,4 +13,9 @@ async function createQuestion(url: "question", params: Params) {
   return await checkResult(err, result);
 }
 
-export { createQuestion };
+async function getQuestionDataList(url: "questions", params = {}) {
+  const [err, result] = await Get(`${urlSuffix}/${url}`, params);
+  return await checkResult(err, result);
+}
+
+export { createQuestion, getQuestionDataList };

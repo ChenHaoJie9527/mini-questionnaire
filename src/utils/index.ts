@@ -28,8 +28,20 @@ export function getQuestionList(lent: number) {
       isPublished: Random.boolean(),
       isStarted: Random.boolean(),
       answerCount: Random.natural(),
-      createAt: "3月10日 13:23",
+      createAt: Random.datetime(),
+      isDelete: false,
     });
   }
   return list;
 }
+
+export type QuestionListType = {
+  id: string;
+  title: string;
+  isPublished: boolean;
+  isStarted: boolean;
+  answerCount: number;
+  createAt: string;
+  isDelete: boolean;
+  key: string;
+};

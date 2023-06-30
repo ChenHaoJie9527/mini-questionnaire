@@ -1,7 +1,8 @@
 import { userApi } from "./path/user";
-import { createQuestion } from "./path/mange";
+import { createQuestion, getQuestionDataList } from "./path/mange";
 
 export const api = {
   ...userApi,
   createQuestion,
+  getQuestionDataList,
 };

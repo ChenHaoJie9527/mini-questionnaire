@@ -44,7 +44,7 @@ const MangeLayout: FC = () => {
 
   return (
     <Layout hasSider>
-      <Sider style={siderStyle}>
+      <Sider width={340} style={siderStyle}>
         <div className="flex items-center flex-col">
           <Space direction="vertical">
             <Button

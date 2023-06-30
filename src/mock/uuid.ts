@@ -1,7 +1,6 @@
-import {v4 as uuidV4} from "uuid";
-
+import { Random } from "mockjs";
 function createUuid() {
-    return uuidV4();
+  return Random.id();
 }
 
 export default createUuid;

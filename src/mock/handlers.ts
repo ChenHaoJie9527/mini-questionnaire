@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { rest } from "msw";
 import { Random } from "mockjs";
+import { getQuestionList } from "../utils";
 
 interface LoginBody {
   username: string;
@@ -102,7 +103,7 @@ function createQuestionnaire() {
     const result = ctx.json<CreateResponse>({
       code: 0,
       data: {
-        id: Random.id()
+        id: Random.id(),
       },
     });
     return res(result);
@@ -137,14 +138,16 @@ interface QuestionListResponse {
   code: number;
   data: {
     list: any[];
+    total: number;
   };
 }
-function getQuestionList() {
+function questionList() {
   return rest.get("/api/questions", async (req, res, ctx) => {
     const result = ctx.json<QuestionListResponse>({
       code: 0,
       data: {
-        list: [],
+        list: getQuestionList(10),
+        total: 100,
       },
     });
     return res(result);
@@ -190,7 +193,7 @@ const handles = [
   userInfo(),
   createQuestionnaire(),
   getSingleQuestionnaire(),
-  getQuestionList(),
+  questionList(),
   updateQuestion(),
   deleteQuestions(),
 ];
