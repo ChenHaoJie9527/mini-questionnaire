@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React, { FC, useState, useEffect } from "react";
+import React, { FC } from "react";
 import QuestionCard from "../../components/QuestionCard";
 import Header from "../../components/Header";
 import { useTitle } from "ahooks";

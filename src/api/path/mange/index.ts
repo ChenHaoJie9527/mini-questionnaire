@@ -7,6 +7,8 @@ interface Params {
   username: string;
   uid: number;
   keywordId: string;
+  isStart: boolean;
+  isDelete: boolean;
 }
 
 type ParamsProps = Partial<Params>;
