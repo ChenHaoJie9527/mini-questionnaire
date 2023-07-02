@@ -60,11 +60,11 @@ const Trash: FC = () => {
   const list: any[] = result?.data.list ?? [];
 
   return (
-    <div className="w-full h-full">
+    <div className="w-11/12 h-full">
       <Header title="回收站" />
       <div className="h-full">
         {loading && (
-          <div>
+          <div className="w-full h-full flex items-center justify-center">
             <Spin />
           </div>
         )}

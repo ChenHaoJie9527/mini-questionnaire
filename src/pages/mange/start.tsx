@@ -16,19 +16,20 @@ const Start: FC = () => {
   const list: any[] = result?.data.list ?? [];
   console.log(list);
   return (
-    <div className="w-full h-full p-5">
+    <div className="w-11/12 h-full p-5">
       <Header title="星标问卷" />
       <div
         style={ContextCss}
         className="scroll-smooth overflow-y-auto scrollbar"
       >
         {loading && (
-          <div>
+          <div className="w-full h-full flex items-center justify-center">
             <Spin />
           </div>
         )}
         {!loading && list.length === 0 && <Empty description="暂无数据" />}
-        {(!loading && list.length > 0) &&
+        {!loading &&
+          list.length > 0 &&
           list.map((item: any) => {
             const props = { ...item, onStart };
             return <QuestionCard {...props} key={item.id} />;

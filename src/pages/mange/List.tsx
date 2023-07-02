@@ -19,14 +19,14 @@ const List: FC = () => {
   // const total = result?.data.total ?? 0;
 
   return (
-    <div className="w-full p-5">
+    <div className="w-11/12 p-5">
       <Header title="我的问卷" />
       <div
         style={ContextCss}
         className="scroll-smooth overflow-y-auto scrollbar"
       >
         {loading && (
-          <div>
+          <div className="w-full h-full flex items-center justify-center">
             <Spin />
           </div>
         )}
