@@ -9,6 +9,8 @@ interface Params {
   keywordId: string;
   isStart: boolean;
   isDelete: boolean;
+  page: number;
+  pageSize: number;
 }
 
 type ParamsProps = Partial<Params>;

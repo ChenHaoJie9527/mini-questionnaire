@@ -142,14 +142,33 @@ interface QuestionListResponse {
   };
 }
 function questionList() {
+  function hasSearchMaps(str1: string) {
+    const val = str1.slice(1);
+    const _val = val.split("&");
+    const paramsMap = new Map();
+    for (let i = 0; i < _val.length; i++) {
+      const item = _val[i].split("=");
+      paramsMap.set(item[0], item[1]);
+    }
+    return paramsMap;
+  }
   return rest.get("/api/questions", async (req, res, ctx) => {
     const { url } = req;
+    const searchMaps = hasSearchMaps(url.search);
+    console.log("searchMaps: ", searchMaps);
     const isDelete = url.search.includes("isDelete=true");
     const isStarted = url.search.includes("isStart=true");
+    const page = searchMaps.get("page") || 1;
+    const pageSize = searchMaps.get("pageSize") || 10;
     const result = ctx.json<QuestionListResponse>({
       code: 0,
       data: {
-        list: getQuestionList(10, isDelete, isStarted),
+        list: getQuestionList({
+          lent: pageSize,
+          isDelete,
+          isStarted,
+          page,
+        }),
         total: 100,
       },
     });

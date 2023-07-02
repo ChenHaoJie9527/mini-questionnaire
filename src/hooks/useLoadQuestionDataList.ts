@@ -5,17 +5,24 @@ import { getQuestionDataList } from "../api/path/mange";
 interface Option {
   isStart: boolean;
   isDelete: boolean;
+  page: number;
+  pageSize: number;
 }
 
 function useLoadQuestionDataList(option: Partial<Option> = {}) {
   const { isStart, isDelete } = option;
   const [searchParams] = useSearchParams();
   const load = async () => {
-    const keywordId = searchParams.get("keywordId") || "";
+    const keywordId = getSearchParamsKey("keywordId", searchParams) || "";
+    const page = Number(getSearchParamsKey("page", searchParams)) || 1;
+    const pageSize = Number(getSearchParamsKey("pageSize", searchParams)) || 10;
+
     const result = await getQuestionDataList("questions", {
       keywordId,
       isStart,
       isDelete,
+      page,
+      pageSize,
     });
     return result;
   };
@@ -25,6 +32,10 @@ function useLoadQuestionDataList(option: Partial<Option> = {}) {
   return {
     ...result,
   };
+}
+
+function getSearchParamsKey(key: string, searchParams: URLSearchParams) {
+  return searchParams.get(key);
 }
 
 export default useLoadQuestionDataList;

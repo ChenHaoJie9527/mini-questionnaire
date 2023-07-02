@@ -12,8 +12,16 @@ export async function checkResult(
   });
 }
 
-export function getQuestionList(lent: number, isDelete = false, isStarted?: boolean) {
+interface ListParams {
+  lent: number;
+  isDelete?: boolean;
+  isStarted?: boolean;
+  page?: number;
+}
+
+export function getQuestionList(params: ListParams) {
   const list = [];
+  const {lent, isDelete = false, isStarted} = params;
   for (let i = 0; i < lent; i++) {
     list.push({
       id: Random.id(),
