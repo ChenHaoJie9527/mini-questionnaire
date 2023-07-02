@@ -14,7 +14,7 @@ const Start: FC = () => {
   };
   const { data: result, loading } = useLoadQuestionDataList({ isStart: true });
   const list: any[] = result?.data.list ?? [];
-  
+  console.log(list);
   return (
     <div className="w-full h-full p-5">
       <Header title="星标问卷" />
@@ -28,7 +28,7 @@ const Start: FC = () => {
           </div>
         )}
         {!loading && list.length === 0 && <Empty description="暂无数据" />}
-        {list.length > 0 &&
+        {(!loading && list.length > 0) &&
           list.map((item: any) => {
             const props = { ...item, onStart };
             return <QuestionCard {...props} key={item.id} />;

@@ -2,7 +2,7 @@
 import React, { FC, useState } from "react";
 import { useTitle } from "ahooks";
 import Header from "../../components/Header";
-import { Button, Empty, Space, Table, Tag, Modal } from "antd";
+import { Button, Empty, Space, Table, Tag, Modal, Spin } from "antd";
 import { ExceptionOutlined } from "@ant-design/icons";
 import useLoadQuestionDataList from "../../hooks/useLoadQuestionDataList";
 import { ContextCss } from "../../common/styles";
@@ -62,10 +62,15 @@ const Trash: FC = () => {
   return (
     <div className="w-full h-full">
       <Header title="回收站" />
-      <div>
+      <div className="h-full">
+        {loading && (
+          <div>
+            <Spin />
+          </div>
+        )}
         {!loading && list.length === 0 && <Empty description="暂无数据" />}
-        {list.length > 0 && (
-          <>
+        {!loading && list.length > 0 && (
+          <div>
             <div className="flex items-start justify-start h-20">
               <Space>
                 <Button type="primary" disabled={selectIds.length === 0}>
@@ -92,9 +97,8 @@ const Trash: FC = () => {
                 ...rowSelection,
               }}
             />
-          </>
+          </div>
         )}
-        {/* <div>分页...</div> */}
       </div>
     </div>
   );

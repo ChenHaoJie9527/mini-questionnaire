@@ -30,8 +30,7 @@ const List: FC = () => {
             <Spin />
           </div>
         )}
-        {questionList.length > 0 &&
-          !loading &&
+        {!loading && questionList.length > 0 &&
           questionList.map((item: QuestionListType) => {
             const props = { ...item, onStart };
             return <QuestionCard {...props} key={item.id} />;
