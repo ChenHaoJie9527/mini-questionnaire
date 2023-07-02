@@ -9,6 +9,8 @@ interface Option {
   pageSize: number;
 }
 
+type keys = "keywordId" | "pageSize" | "page";
+
 function useLoadQuestionDataList(option: Partial<Option> = {}) {
   const { isStart, isDelete } = option;
   const [searchParams] = useSearchParams();
@@ -34,7 +36,7 @@ function useLoadQuestionDataList(option: Partial<Option> = {}) {
   };
 }
 
-function getSearchParamsKey(key: string, searchParams: URLSearchParams) {
+export function getSearchParamsKey(key: keys, searchParams: URLSearchParams) {
   return searchParams.get(key);
 }
 
