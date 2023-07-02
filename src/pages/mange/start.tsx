@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import QuestionCard from "../../components/QuestionCard";
 import { useTitle } from "ahooks";
 import useLoadQuestionDataList from "../../hooks/useLoadQuestionDataList";
+import { ContextCss } from "../../common/styles";
 
 const Start: FC = () => {
   useTitle("小码问卷 - 星标问卷");
@@ -12,28 +13,28 @@ const Start: FC = () => {
     console.log("id", id);
   };
   const { data: result, loading } = useLoadQuestionDataList({ isStart: true });
-  const list = result?.data.list ?? [];
-  const total = result?.data.total ?? 0;
+  const list: any[] = result?.data.list ?? [];
+  
   return (
-    <>
+    <div className="w-full h-full p-5">
+      <Header title="星标问卷" />
       <div
-        className="w-full p-5"
+        style={ContextCss}
+        className="scroll-smooth overflow-y-auto scrollbar"
       >
-        <Header title="星标问卷" />
         {loading && (
           <div>
             <Spin />
           </div>
         )}
-        {list.length === 0 && <Empty description="暂无数据" />}
+        {!loading && list.length === 0 && <Empty description="暂无数据" />}
         {list.length > 0 &&
           list.map((item: any) => {
             const props = { ...item, onStart };
             return <QuestionCard {...props} key={item.id} />;
           })}
-        <div>分页 {total}</div>
       </div>
-    </>
+    </div>
   );
 };
 

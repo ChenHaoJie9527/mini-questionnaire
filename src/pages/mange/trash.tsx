@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, useState } from "react";
-import { statList } from "../../mock";
 import { useTitle } from "ahooks";
 import Header from "../../components/Header";
 import { Button, Empty, Space, Table, Tag, Modal } from "antd";
 import { ExceptionOutlined } from "@ant-design/icons";
+import useLoadQuestionDataList from "../../hooks/useLoadQuestionDataList";
+import { ContextCss } from "../../common/styles";
 
 const Trash: FC = () => {
   useTitle("小码问卷 - 回收站");
-  const [list] = useState(statList);
   const [selectIds, setSelectIds] = useState<React.Key[]>([]);
   const tableColumns = [
     {
@@ -55,35 +56,46 @@ const Trash: FC = () => {
     });
   };
 
+  const { data: result, loading } = useLoadQuestionDataList({ isDelete: true });
+  const list: any[] = result?.data.list ?? [];
+
   return (
-    <div className="w-full p-5" style={{ height: "calc(100vh - 64px - 90px)" }}>
+    <div className="w-full h-full">
       <Header title="回收站" />
-      {list.length === 0 && <Empty description="暂无数据" />}
-      {list.length > 0 && (
-        <>
-          <div className="flex items-start justify-start h-20">
-            <Space>
-              <Button type="primary" disabled={selectIds.length === 0}>
-                回复
-              </Button>
-              <Button danger disabled={selectIds.length === 0} onClick={onDel}>
-                彻底删除
-              </Button>
-            </Space>
-          </div>
-          <Table
-            dataSource={list}
-            columns={tableColumns}
-            rowKey={(item) => item.key}
-            pagination={false}
-            rowSelection={{
-              type: "checkbox",
-              ...rowSelection,
-            }}
-          />
-        </>
-      )}
-      <div>分页...</div>
+      <div>
+        {!loading && list.length === 0 && <Empty description="暂无数据" />}
+        {list.length > 0 && (
+          <>
+            <div className="flex items-start justify-start h-20">
+              <Space>
+                <Button type="primary" disabled={selectIds.length === 0}>
+                  回复
+                </Button>
+                <Button
+                  danger
+                  disabled={selectIds.length === 0}
+                  onClick={onDel}
+                >
+                  彻底删除
+                </Button>
+              </Space>
+            </div>
+            <Table
+              style={ContextCss}
+              className="scroll-smooth overflow-y-auto scrollbar"
+              dataSource={list}
+              columns={tableColumns}
+              rowKey={(item) => item.id}
+              pagination={false}
+              rowSelection={{
+                type: "checkbox",
+                ...rowSelection,
+              }}
+            />
+          </>
+        )}
+        {/* <div>分页...</div> */}
+      </div>
     </div>
   );
 };

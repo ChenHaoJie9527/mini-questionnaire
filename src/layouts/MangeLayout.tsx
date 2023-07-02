@@ -83,7 +83,9 @@ const MangeLayout: FC = () => {
           </Space>
         </div>
       </Sider>
-      <Content style={contentStyle}>
+      <Content
+        style={contentStyle}
+      >
         <Outlet />
       </Content>
     </Layout>
