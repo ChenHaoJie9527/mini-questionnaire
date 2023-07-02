@@ -12,17 +12,17 @@ export async function checkResult(
   });
 }
 
-export function getQuestionList(lent: number) {
+export function getQuestionList(lent: number, isDelete = false, isStarted?: boolean) {
   const list = [];
   for (let i = 0; i < lent; i++) {
     list.push({
       id: Random.id(),
       title: Random.ctitle(),
       isPublished: Random.boolean(),
-      isStarted: Random.boolean(),
+      isStarted,
       answerCount: Random.natural(),
       createAt: Random.datetime(),
-      isDelete: false,
+      isDelete,
     });
   }
   return list;

@@ -143,10 +143,13 @@ interface QuestionListResponse {
 }
 function questionList() {
   return rest.get("/api/questions", async (req, res, ctx) => {
+    const { url } = req;
+    const isDelete = url.search.includes("isDelete=true");
+    const isStarted = url.search.includes("isStart=true");
     const result = ctx.json<QuestionListResponse>({
       code: 0,
       data: {
-        list: getQuestionList(10),
+        list: getQuestionList(10, isDelete, isStarted),
         total: 100,
       },
     });
