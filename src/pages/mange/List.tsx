@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React, { FC, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
