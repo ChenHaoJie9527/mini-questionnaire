@@ -8,6 +8,7 @@ import { useTitle } from "ahooks";
 import { QuestionListType } from "../../utils";
 import { Spin } from "antd";
 import { ContextCss } from "../../common/styles";
+import { useDebounceFn } from "ahooks";
 
 const List: FC = () => {
   useTitle("小码问卷 - 问卷列表");
@@ -21,15 +22,20 @@ const List: FC = () => {
   const [total, setTotal] = useState(0);
   const haveMoreData = total > questionList.length;
 
-  // 触发加载
-  const tryLoadMore = () => {
-    console.log("滚动加载");
-  };
-
   // 当页面加载，或者 url 参数 变化时 触发加载
   useEffect(() => {
     tryLoadMore();
   }, [searchParams]);
+
+  // 触发加载 - 防抖
+  const { run: tryLoadMore } = useDebounceFn(
+    () => {
+      console.log("加载更多");
+    },
+    {
+      wait: 100,
+    }
+  );
 
   // 当页面滚动时，触发加载
   useEffect(() => {
@@ -37,6 +43,7 @@ const List: FC = () => {
     //   window.addEventListener("scroll", tryLoadMore);
     // }
     window.addEventListener("scroll", tryLoadMore);
+
     return () => {
       window.removeEventListener("scroll", tryLoadMore);
     };
@@ -55,8 +62,7 @@ const List: FC = () => {
           </div>
         )} */}
         <div className="h-[3000px]"></div>
-        {
-          questionList.length > 0 &&
+        {questionList.length > 0 &&
           questionList.map((item: QuestionListType) => {
             const props = { ...item, onStart };
             return <QuestionCard {...props} key={item.id} />;
